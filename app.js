@@ -1,10 +1,15 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
+  });
+}
+
 let semesters = {
   /* sem id: course id*/
   sem_1: 1
-}
-
-function get_semester(id) {
-  // return new_
 }
 
 function course_row(semester_id, course_id) {
@@ -133,7 +138,7 @@ function calculate(e) {
       sem_ch += course.credit_hour
       cgpa += gp
       ch += course.credit_hour
-      console.log(sem_ch, sem_gpa)
+
       document.querySelector(`#gp_${i+1}_${j+1}`).textContent = gp
     })
 
@@ -141,7 +146,6 @@ function calculate(e) {
     document.querySelector('#sum_ch_' + (i+1)).textContent = sem_ch
 
     sem_gpa /= sem_ch
-    console.log(sem_gpa)
 
     let output = document.createElement('div')
     output.textContent = `Sem ${i+1} GPA: ${sem_gpa}`
@@ -150,25 +154,4 @@ function calculate(e) {
 
   cgpa /= ch
   document.querySelector('#cgpa').textContent = cgpa
-  console.log(`cgpa: ${cgpa}`)
-}
-
-function test(e) {
-  console.log(semesters)
-}
-
-/**
- * Ref: https://plainjs.com/javascript/utilities/merge-two-javascript-objects-19/
- */
-function extend(obj, src) {
-  for (var key in src) {
-      if (src.hasOwnProperty(key)) obj[key] = src[key];
-  }
-  return obj;
-}
-
-function get_sem_ids() {
-  return Object.keys(semesters).map(function (val) {
-    return val.split('_')[1]
-  })
 }
