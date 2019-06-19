@@ -15,48 +15,59 @@
                 <h1>CGPA Calculator</h1>
             </div>
         </div>
-        <div class="row" id="semester_1">
+        <div id="semesters">
+            <div class="row" id="semester_1">
+                <div class="col-xs-12 col-sm-12">
+                    <table class="semester table table-bordered table-sm">
+                        <thead>
+                            <th>Course</th>
+                            <th>Credit hour</th>
+                            <th>Numeric value of grade</th>
+                            <th>GP</th>
+                        </thead>
+                        <tbody data-sem_id="1">
+                            <tr id="course_1_1" data-course_id="1">
+                                <td>1</td>
+                                <td><input type="text" name="credit_hour_1_1" id="credit_hour_1_1" class="form-control"></td>
+                                <td><input type="text" name="grade_1_1" id="grade_1_1" class="form-control"></td>
+                                <td><span id="gp_1_1">0</span></td>
+                            </tr>
+                            <tr id="summary_1">
+                                <td>Total</td>
+                                <td><span id="sum_ch_1">0</span></td>
+                                <td></td>
+                                <td><span id="sum_gp_1">0</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button data-sem_id="1" class="btn btn-primary form-control" id="btn_semester_1_add_course" onclick="add_course(this)">
+                                        <i class="typcn typcn-plus"></i> Course
+                                    </button>
+                                </td>
+                                <td colspan="2">
+                                    <button data-sem_id="1" class="btn btn-danger form-control" onclick="remove_semester(this)">
+                                        <i class="typcn typcn-trash"></i> Semester
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="info">
             <div class="col-xs-12 col-sm-12">
-                <table class="semester table table-bordered table-sm">
-                    <thead>
-                        <th>Course</th>
-                        <th>Credit hour</th>
-                        <th>Numeric value of grade</th>
-                        <th>GP</th>
-                    </thead>
-                    <tbody>
-                        <tr id="course_1_1">
-                            <td>1</td>
-                            <td><input type="text" name="credit_hour_1_1" id="credit_hour_1_1" class="form-control"></td>
-                            <td><input type="text" name="grade_1_1" id="grade_1_1" class="form-control"></td>
-                            <td><span id="gp_1_1">0</span></td>
-                        </tr>
-                        <tr id="summary_1">
-                            <td>Total</td>
-                            <td>0</td>
-                            <td></td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <button data-sem_id="1" class="btn btn-primary form-control" id="btn_semester_1_add_course" onclick="add_course(this)">
-                                    <i class="typcn typcn-plus"></i> Course
-                                </button>
-                            </td>
-                            <td colspan="2">
-                                <button data-sem_id="1" class="btn btn-danger form-control" onclick="remove_semester(this)">
-                                    <i class="typcn typcn-trash"></i> Semester
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="gpas"></div>
+                <h4>CGPA: <span id="cgpa">0</span></h4>
             </div>
         </div>
         <div class="row" id="row_add_semester">
             <div class="col-xs-12 col-sm-12">
                 <button class="btn btn-primary form-control" id="btn_add_semester" onclick="add_semester(this)">
                     <i class="typcn typcn-plus"></i> Semester
+                </button>
+                <button class="btn btn-success form-control" onclick="calculate(this)">
+                    <i class="typcn typcn-calculator"></i> Calculate
                 </button>
                 <button class="btn btn-primary form-control" onclick="test(this)">
                     <i class="typcn typcn-plus"></i> Test
