@@ -2,6 +2,13 @@ var CACHE_NAME = 'cgpa-calculator-cache-v1';
 const FILES_TO_CACHE = [
   '/index.html',
   '/offline.html',
+  '/images/icons/icon-128x128.png',
+  '/images/icons/icon-256x256.png',
+  '/images/icons/icon-512x512.png',
+  '/app.js',
+  'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css',
+
 ];
 
 self.addEventListener('install', function(evt) {
@@ -17,7 +24,7 @@ self.addEventListener('activate', function(evt) {
   evt.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(keyList.map((key) => {
-        if (key !== CACHE_NAME) {
+        if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
           console.log('[ServiceWorker] Removing old cache', key);
           return caches.delete(key);
         }
